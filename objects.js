@@ -42,10 +42,10 @@ const students = [
   { name: 'Jill', scores: [85, 90, 84] },
 ];
 
-const topStudents = getTopStudents(students)
+const topStudents = bestStudents(students)
 console.log(topStudents)
 
-function getTopStudents(students) {
+function bestStudents(students) {
   const topStudents = []
   for (const student of students) {
     const scores = student.scores
@@ -68,3 +68,23 @@ const car = {
   console.log(`Make: ${this.make}, Model: ${this.model}, Year: ${this.year}`);
   },
 };
+
+function Age(car) {
+  const currentYear = new Date().getFullYear();
+  const age = currentYear - car.year;
+  
+  car.age = function() {
+    return age;
+  };
+}const myCar = {
+  make: 'Honda',
+  model: 'Civic',
+  year: 2015,
+  display: function() {
+    console.log(`${this.make} ${this.model} (${this.year})`);
+  }
+};
+
+Age(myCar);
+
+console.log(myCar.age());
